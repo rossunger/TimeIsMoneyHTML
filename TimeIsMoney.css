@@ -1,0 +1,212 @@
+#notification {
+    position: fixed;
+    zdisplay: none;
+    width: 20%;
+    height: 100%;
+
+    transition: right 0.8s;
+    right: -18%;
+    border: solid black 2px;
+    background-color: rgba(201,200,200,0.9); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+.RefineHabit
+{
+  background: linear-gradient(#FFF, #BBB);
+  width:50%;
+}
+.plus, .minus
+{
+  width:33%;
+}
+.quotes
+{
+  padding-left:10%;
+  padding-right:10%;
+  font-style: italic;
+  text-align: right;
+}
+.highlight
+{
+  animation: noticeMe 0.9s steps(20);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+background: linear-gradient(0deg, #ff2f2f, #f3f3f3);
+
+}
+@keyframes noticeMe {
+        0% {
+            transform: scale(1);
+
+        }
+        50% {
+            transform: scale(1.08);
+
+        }
+        100% {
+            transform: scale(1);
+
+        }
+}
+#EatButton
+{
+  display:nonez;
+}
+img
+{
+  height:40px!important;
+  width:auto!important;
+}
+.HomesRow tr
+{
+  zwidth:100%;
+}
+.HomesRow td
+{
+  vertical-align: middle;
+}
+.HomesRow td:first-child
+{
+  padding-left:0;
+
+}
+.schoolButtons
+{
+  width:48%;
+}
+.parentA
+{
+  opacity: 1;
+  transition: opacity 2s;
+}
+.birth
+{
+ width: 300px;
+ height: 189px;
+ background: url("Birth.png") left center;
+ animation: playBirth 20s steps(700);
+ animation-iteration-count:1;
+ transition: width 2s;
+}
+@keyframes playBirth {
+   100% { background-position: -210000px; }
+}
+.ross-gradient
+{
+  background: linear-gradient(270deg, #ff2f2f, #ffe52f, #62ff2f, #2fffb4, #2f65ff, #c32fff, #ff2fb1, #ff2fb1);
+  animation: Gradient 10s ease infinite;
+  color: white;
+  background-size: 400% 400%;
+}
+@keyframes Gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+button{
+  width:100%;
+}
+td
+{
+  text-align: center;
+}
+.habitbutton
+{
+  width:100%;
+  display:none;
+}
+.habitsubtitle
+{
+  font-size:60%
+}
+.spin
+{
+  transform-origin: center;
+  animation-name: spin;
+  animation-duration: 6000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.spinsmallhand
+{
+  transform-origin: 86% 86%;
+  animation-name: spin;
+  animation-duration: 60000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.spinbighand
+{
+  transform-origin: 11% 89%;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.spinreverse
+{
+  transform-origin: center;
+  animation-name: spinreverse;
+  animation-duration: 6000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+}
+@keyframes spinreverse {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(-360deg);
+        }
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

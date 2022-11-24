@@ -1,0 +1,451 @@
+  <html>
+<head>
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="TimeIsMoney.css">
+  <script type="text/javascript" src="jdenticon.js"></script>
+  <script type="text/javascript" src="Variables.js?v3"></script>
+  <script type="text/javascript" src="Main.js?v3"></script>
+  <script type="text/javascript" src="chance.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<div id="notification" onmouseleave="document.getElementById('notification').style.right='-18%';" onmouseover="document.getElementById('notification').style.right='0';"><br><iframe style="width:100%; border:none" src='Artworks.html'></iframe></div>
+<!-- STATUS BAR  -->
+  <div class="w3-container w3-black" style="position:fixed; width:100%; z-index:100;">
+    <span >Estimated Time until Death: <span id="time">2209032000</span> seconds</span>
+    <span style="float:right">Age: <span id="age">2</span> years old
+  </div>
+  <!-- STAGE 1  -->
+  <div class="w3-containerz w3-yellow"  style="display:znone">
+<br>
+    <div class="birth" id="Birth" style="display:none"></div>
+    <button id="ButtonBegin" onclick="StartTimers()" style="width:auto">Begin</button> <br>Speed Of Time: <input disabled type="range" id="SpeedOfTime" value="100">
+<div id="debug" style="display:none">    <button onclick="debugVariables()" style="width:auto">debug variables</button><input id="debugVar"><br><br></div>
+
+    <!--div id="intro_1" class="w3-container w3-blue">
+      <img src="BabyCrying.gif" style="width:33vw;">
+    waaaaaaah waaaaaaah</div-->
+    <div id="MainDiv" class="" style="width:100vw; display:znone">
+      <div class="w3-row" style="padding-right:0%">
+
+        <div class="w3-col s4">
+          <!--BASIC NEEDS-->
+          <div class="w3-border">
+            <div onclick="ToggleDiv('BasicNeedsDivBody')" class="w3-border w3-center w3-dark-grey">Basic Needs</div>
+            <div id="BasicNeedsDivBody">
+              <p class="quotes">&#10077; You have to eat and sleep. Everything else is optional&#10078;</p>
+              Hungry: <span id="hungry">0</span>% <button id="EatButton" onclick="DoEat()">Eat</button> <span id="eatingtime"></span><br><br>
+              <div id="GroceryDiv" style="zdisplay:none">
+                  Groceries: <span id="AvailableGroceries">0</span><br>
+                    <button onclick="DoBuyGroceries()" id="Buy Groceries">Buy Groceries</button>
+                    <button onclick="DoCook()" id="Cook">Cook</button>
+                    <button onclick="DoEatOut()" id="Buy Groceries">Eat Out</button>
+              </div>
+
+
+              Tired: <span id="tired">0</span>% <button id="SleepButton" onclick="DoSleep()">Sleep</button> <span id="sleeptime"></span><br><br>
+              <div id="ChoresDiv">
+                Chores: <span id="Chores">0</span>% <button id="ChoresButton" onclick="DoChores()">Do Chores</button><br><br>
+              </div>
+              What is life?
+              <button title="Too busy! Must eat! Must sleep!" disabled id="observeButton" onclick="DoObserve()">Observe The World</button><br>
+              Next Discovery: Age <span id="discoveryAge">3</span>
+              <br><br>
+              <div id="HomeDiv">
+                Current home: <br>
+                <table class="w3-table w3-border " >
+                  <tr class="w3-border HomesRow">
+                      <td id="currentHomeName" >a</td>
+                      <td id="currentHomeRent">b</td>
+                      <td id="currentHomeScore">c</td>
+
+                  </tr>
+                </table>
+                <button onclick="FindNewHome()">Search For A New Home</button>
+                <table class="w3-table w3-border">
+
+                  <tr id="NewHome1" class="w3-hover-green w3-border HomesRow" style="display:none">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+          <!--IDENTITY-->
+          <div style="" id="IdentityDiv" class="w3-border">
+            <div  onclick="ToggleDiv('IdentityDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Identity</div>
+            <div id="IdentityDivBody">
+              Name: <input disabled id="myName" value="name?"></input><br>
+              <button class="ChangeIdentity">Change Name</button>
+              <br><br>
+
+              <p class="quotes">&#10077; Masculine and feminine roles are not biologically fixed but socially constructed.&#10078;</p>
+              Perceived Gender: <span id="PerceivedGender">????</span><br>
+              <button id="MascButton" onclick="DoGender('masc')" style="width:50%">Masc</button><button id="FemButton" onclick="DoGender('fem')" style="width:50%">Fem</button><br>
+              <div class="" style=""><div id="GenderMasc" class="w3-blue" style="width:5%; float:left">&nbsp</div><div id="GenderNone" class="ross-gradient" style="display:none; float:left">&nbsp</div><div id="GenderFem" class="w3-pink" style="width:5%; float:right; ">&nbsp</div></div>
+              <button class="ChangeIdentity" id="UnlearnGender" onclick="DoGender('unlearn')">Unlearn Gender</button><br><br>
+              <div id="SexDiv">
+                Sexuality:
+                <select disabled id="SexualitySelector">
+                  <option>Huh?</option>
+                  <option>Asexual</option>
+                  <option>Straight</option>
+                  <option>Gay</option>
+                  <option>Pansexual</option>
+                </select>
+
+              <button title="Too young for that!" onclick="DoExploreSexuality()" alt="too young for that">Explore Sexuality</button>
+              </div>
+              <br>
+              <div id="CulturalBackgroundDiv">
+                Cultural Background: <select disabled>
+                  <option >What is culture?</option>
+                  <option></option>
+                  <option></option>
+                  <option></option>
+                </select><br>
+                <button>Explore Heritage</button><br>
+              </div>
+            </div>
+          </div>
+          <!--CAREER-->
+          <div id="CareerDiv" class="w3-border ">
+                <div onclick="ToggleDiv('CareerDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Career</div>
+                <div id="CareerDivBody">
+                  <label>Current Career: </label>
+                  <select id="currentCareer">
+                      <option>None</option>
+                      <option>Basic</option>
+                        <option>Arts</option>
+                        <option>Science</option>
+                        <option>IT</option>
+                        <option>Management</option>
+                        <option>Temp</option>
+
+                        </select><br><br>
+                  Current Jobs: <br>
+                  <table class="w3-table w3-border " id="CurrentJobTable">
+
+                  </table>
+                  <button onclick="DoWork()">Go To Work</button>
+                  <button onclick="FindNewJob()">Search For A New Job</button>
+                  <table class="w3-table w3-border">
+
+                    <tr id="NewJob1" class="w3-hover-green w3-border HomesRow" style="display:none">
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+        </div>
+
+        <div class="w3-col s4" >
+          <div class="w3-border" id="HabitsDiv">
+            <div onclick="ToggleDiv('HabitDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Habits</div>
+            <div id="HabitDivBody" class="w3-containerz">
+              <p class="quotes">&#10077; We become what we do repeatedly.&#10078;</p>
+              <div  id="TimeSpentOnHabitsDiv">Time Spent On Habits:<br> <span id="HabitTotalTime">0</span>%<br><br></div >
+
+              <button onclick="DoAuto(0)" id="autoEat" class="habitbutton">Eating<br><span class="habitsubtitle">Om nom nom nom</span><bR></button>
+              <button onclick="DoAuto(1)" id="autoSleep" class="habitbutton">Sleeping<br><span class="habitsubtitle">zzzzzzzzzzzzzz</span><bR></button>
+              <button onclick="DoAuto(2)" id="autoHealthCheck" class="habitbutton">Checking Health<br><span class="habitsubtitle">Ahhhhhhhhhh!</span><bR></button>
+              <button onclick="DoAuto(3)" id="autoGender" class="habitbutton">Perform Gender<br><span class="habitsubtitle">Waaaaaah?</span><bR></button>
+              <button onclick="DoAuto(4)" id="autoSeekLove" class="habitbutton">Seek Love<br><span class="habitsubtitle"><3<3<3<3<3<3<3<3</span><bR></button>
+              <button onclick="DoAuto(5)" id="autoSchool" class="habitbutton">Study<br><span class="habitsubtitle">Hmmmmmmmm!</span><bR></button>
+              <button onclick="DoAuto(6)" id="autoWork" class="habitbutton">Perform Gender<br><span class="habitsubtitle">Ughhhh</span><bR></button>
+              <br><span id="HabitList"></span>
+              <div id="AdvancedHabitsDiv">
+                <button>Examine Habits</button>
+                <button>Change Habit</button>
+                <div id="RefineHabitsDiv">
+                  <button>Refine Habits</button>
+                  <button onclick="" id="Graze" class="RefineHabit">Eat Faster<br><span class="habitsubtitle">Om nom nom nom</span><bR></button><button onclick="" id="Graze" class="RefineHabit">Eat Sweeter<br><span class="habitsubtitle">Om nom nom nom</span><bR></button>
+                </div>
+                <div id="ManageTimeDiv">
+                  <button>Manage Time</button>
+                  <table class="w3-table">
+                    <tr>
+                      <th>Habit</td>
+                      <th>Energy: 7</td>
+                    </tr>
+
+                      <script>
+                        for (let i=0; i<8; i++)
+                          document.write("<tr><td>" +Habit[i]+"</td><td><button class='minus'>-</button><input style='width:30%' type='number' value='"+i+"'><button class='plus' onclick=''>+</button></td></tr>")
+                        </script>
+
+                  </table>
+                </div>
+                <button onclick="DoDecoloniseTime()">Decolonise time</button>  <div class="w3-light-grey">
+                <div class="w3-grey" id="DecoloniseTime" style="height:24px;width:1%"></div></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="w3-border " id="HealthDiv">
+            <div onclick="ToggleDiv('HealthDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Health</div>
+            <div id="HealthDivBody">
+              Diagnosis: <span id="diagnosis">Healthy</span>
+              <table class="w3-table ">
+                <tr>
+                  <td id="heartHealth" class="w3-hover-green" onclick="">100%</td>
+                  <td>Heart</td>
+                </tr>
+                <tr>
+                  <td id="headHealth" class="w3-hover-green">100%</td>
+                  <td>Head</td>
+                </tr>
+                <tr>
+                  <td id="immuneHealth" class="w3-hover-green">100%</td>
+                  <td>Immune System</td>
+                </tr>
+                <tr>
+                  <td id="HygeneHealth" class="w3-hover-green">100%</td>
+                  <td>Hygene</td>
+                </tr>
+
+              </table>
+              <button>Brush Teeth</button>
+              <button>Shower/Bathe</button>
+              <button id="CheckHealth" onclick="DoCheckHealth()">See A Doctor</button><br>
+              Time since last health-check: <span id="LastHealthCheck"></span><br><br>
+              <div id="WorkOutDiv">
+                <button>Exercise</button>
+                <button>Work Out</button>
+              </div>
+            </div>
+          </div>
+          <div id="FinanceDiv" class="w3-border ">
+                <div onclick="ToggleDiv('FinanceDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Finances</div>
+                <div id="FinanceDivBody">
+                  Total Wealth: $<span id="Wealth">??</span>
+                  <br>
+                  Cash: $<span id="Cash"></span>
+                  <button id="ParentsMoney" onclick="DoAskParentsForMoney()">Ask Parents For Money</button><br><br>
+                  Expenses: $<span id="Expenses">1000</span>/month
+                  <button id="BudgetButton" onclick="DoMakeBudget()" title="Figure out expenses - takes 20 minutes">Make Budget</button>
+                  <br><br>
+                  <div id="SavingsDiv">
+                  Savings: $<span id="Savings">(2%)</span>         <br>
+                  <div style="display:table; width:100%;">
+                    <div style="display: table-cell;   vertical-align: middle;   width: 100%;">
+                      <button onclick="DoSavings()" title="Move 1% of your cash to savings">Save</button>
+                    </div>
+                    <select id="SelectSavings" style="display:nonez">
+                      <option disabled>How Much?</option>
+                      <option>5%</option>
+                      <option>10%</option>
+                      <option>20%</option>
+                      <option>25%</option>
+                      <option>33%</option>
+                      <option>50%</option>
+                      <option>66%</option>
+                      <option>75%</option>
+                      <option>80%</option>
+                      <option>90%</option>
+                      <option>99%</option>
+                    </select>
+                  </div></div><br>
+                  Investments: $<span id="Investments"></span>
+                  <div style="display:table; width:100%;">
+                    <div style="display: table-cell;   vertical-align: middle;   width: 100%;">
+                      <button id="investButton" onclick="DoInvest()" zstyle="width:100%" >Invest</button>
+
+                    </div>
+                    <div style="display: table-cell;    vertical-align: middle;    width: auto;">
+                      <select>
+                        <option disabled>Risk</option>
+                        <option>-1/+1%</option>
+                        <option>-5/+5%</option>
+                        <option>-10/+10%</option>
+                      </select>
+                    </div>
+                  </div><br>
+                  <button id="GetCredit" onclick="DoApplyForCredit()">Apply For Credit Card</button>
+                  <div id="IncreaseCreditLimit" style="width:0;" class="w3-brown">&nbsp</div>
+                  Credit Card Debt: $<span id="CreditCardDebt"></span><br>
+                  Credit Card Limit: $<span id="CreditCardLimit"></span>
+                </div>
+              </div>
+        </div>
+
+        <div class="w3-col s4">
+          <!--Social-->
+          <div id="SocialDiv" class="w3-border">
+            <div onclick="ToggleDiv('SocialDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Social</div>
+            <div id="SocialDivBody">
+              <p class="quotes">&#10077; A baby is born with a need to be loved - and never outgrows it.&#10078;</p>
+              Need Love: <span id="NeedLove">20</span>%
+              <button onclick="DoSeekLove()" id="SeekLoveButton">Seek Love</button>
+              Trust: <span id="Trust">0</span>%<br>
+              Trust Trauma: <span id="TrustTrauma">0</span>%<br><br>
+              <div id="AvailabilityDiv">
+
+              </div>
+
+              <div id="FriendsDiv">
+                <table class="w3-table w3-border HomesRow" id="CloseFriendsTable">
+                  <tr class="w3-border">
+                      <th>Family</th>
+                      <th>Cost</th>
+                      <th>Avail</th>
+                  </tr>
+                  <tr class="w3-border">
+                      <th>Friend</th>
+                      <th>Cost</th>
+                      <th>Avail</th>
+                  </tr>
+                </table>
+
+                <button onclick="DoMeetStranger()">Meet New People</button>
+                <table class="w3-table w3-border HomesRow" id="NewFriendTable">
+                  <tr class="w3-border HomesRow">
+                      <th>Friend</th>
+                      <th>Cost</th>
+                      <th>Avail</th>
+
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+          <!--SCHOOL-->
+          <div class="w3-border " id="SchoolDiv">
+            <div onclick="ToggleDiv('SchoolDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Education</div>
+            <div id="SchoolDivBody">
+              <p class="quotes">&#10077; It take a 1,000 hours to become skilled, it takes 10,000 to become a master.&#10078;</span></p>
+              Education: <span id="Education"></span> hours
+              <button id="DoSchool" onclick="DoSchool()">Go to school</button>
+              <div id="AOIDiv" style="display:none">
+                Areas Of Interest:<br>
+                <div style="width:100%" id="AreasOfInterest">
+                  <br>
+                </div>
+                <button onclick="DoAreaOfInterest(1)" id="SchoolArts" class="schoolButtons ">Arts and Entertainment</button>
+                <button onclick="DoAreaOfInterest(2)" id="SchoolScience" class="schoolButtons ">Science and Technology</button>
+                <button onclick="DoAreaOfInterest(3)" id="SchoolSociety" class="schoolButtons ">Society and Communication </button>
+                <button onclick="DoAreaOfInterest(4)" id="SchoolCivics" class="schoolButtons ">Civics and Leadership</button>
+                <button onclick="DoAreaOfInterest(5)" id="SchoolSpirit" class="schoolButtons ">Body and Spirituality</button>
+                <button onclick="DoAreaOfInterest(6)" id="SchoolFinance" class="schoolButtons ">Business and Finance</button><br>
+              </div>
+            </div>
+          </div>
+          <div class="w3-border " id="SpiritDiv">
+            <div onclick="ToggleDiv('SpiritDivBody')" class="w3-border-bottom w3-center w3-dark-grey">Heart and Soul</div>
+            <div id="SpiritDivBody">
+              <div id="HappyDiv">
+                Happiness: <span id="Happyness"></span>%
+              </div>
+                <button>Meditate</button>
+                <button>Seek Guidance</button>
+                <button>Make Art</button>
+                <button>Notice Synchronicities</button>
+                <button>Play</button>
+                <div id="VolunteerDiv">
+                  <button>Volunteer</button>
+                </div>
+                Values:
+                <div id="ValuesDiv" style="display:none">
+                  <br>
+                  <div style="width:100%" id="Values">
+                    <br>
+                  </div>
+                  <button onclick="DoValues(1)" id="Values5" class="schoolButtons ">Integrity</button>
+                  <button onclick="DoValues(2)" id="Values5" class="schoolButtons ">Science and Technology</button>
+                  <button onclick="DoValues(3)" id="Values5" class="schoolButtons ">Society and Communication </button>
+                  <button onclick="DoValues(4)" id="Values5" class="schoolButtons ">Civics and Leadership</button>
+                  <button onclick="DoValues(5)" id="Values5" class="schoolButtons ">Body and Spirituality</button>
+                  <button onclick="DoValues(6)" id="Values6" class="schoolButtons ">Business and Finance</button><br>
+
+                </div><br><BR>
+                  Hobbies:
+                  <BUTTON>New Hobby</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div> <!-- yellow  -->
+  <div class="w3-container w3-blue" style="display:none">
+    <div class="w3-row">
+
+      <!--Where From-->
+      <div class="w3-col s4 w3-border ">
+          <div class="w3-border-bottom w3-center w3-dark-grey">Where Do I Come From?</div>
+          Countries<br>
+          Experiences<br>
+          Past Lives<br>
+      </div>
+      <!--Where To-->
+      <div class="w3-col s4 w3-border ">
+          <div class="w3-border-bottom w3-center w3-dark-grey">Where Am I Going?</div>
+          Ambitions<br>
+          Afterlife<br>
+          Where to settle down<br>
+      </div>
+      <!--Who Am I-->
+      <div class="w3-col s4 w3-border ">
+          <div class="w3-border-bottom w3-center w3-dark-grey">Who Am I?</div>
+          Identity<br>
+          Community<br>
+          Values<br>
+      </div>
+      <!--Why?-->
+      <div class="w3-col s4 w3-border ">
+          <div class="w3-border-bottom w3-center w3-dark-grey">Why Am I Here?</div>
+          Meaning of Life<br>
+          Location<br>
+          Responsibilities<br>
+      </div>
+
+  </div> <!--Blue DIV-->
+
+</div>
+
+  </div>
+</div>
+</body>
+</html>
+
+
+<!--
+      Selfish<input type="range" id="myRange" value="90">Selfless<br><br>
+      Serious<input type="range" id="myRange" value="90">Fun<br><br>
+      Depth<input type="range" id="myRange" value="90">Breadth<br><br>
+      <button onclick="DoMeetStranger()">Meet a stranger</button><br><br>
+      <button onclick="DoAcquaintence()">Acquaintence</button><button onclick="DoCloseFriend()">Close Friend</button>
+      <select>
+        <option id="Name">James</option>
+      </select>     <br>
+      Cost: 10 energy<br>
+      Reward: 10 happiness
+
+
+
+
+      Trust:
+<button onclick="DoMinus('trust')" class="minusButton">-</button>
+<label id="" >0</label>
+<button onclick="DoPlus('trust')"class="plusButton">+</button><br>
+<input type="range" id="myRange" value="90"><br>
+<button onclick="DoTrain()">Train</button><br><br>
+<label>Skills: </label><span id="skills">0</span>%<br><br>
+
+
+
+IDEAS
+Knowledge,    Reputation,    Productivity,   MentalHealth,   Investments,   Inspiration,  Hobbies?, <br><br><br>
+EVENTS: <br>
+get a job, get fired, graduate, fall in love, heartbreak, death in the family, medical expenses, pay taxes
+intorvenus feeding popularised (saves time on eating),
+  -->
